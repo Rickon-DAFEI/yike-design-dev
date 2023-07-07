@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
-
 //全局样式
 import './assets/main.less'
 
@@ -21,3 +20,4 @@ const app = createApp(App)
 const pinia = createPinia()
 
 app.use(install).use(pinia).use(router).use(hljsVuePlugin).mount('#app')
+

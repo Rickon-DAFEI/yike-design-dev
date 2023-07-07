@@ -20,7 +20,9 @@
     "js-base64": "^3.7.5",
     "pinia": "^2.1.4",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "markdown-it": "^12.3.2",
+    "markdown-it-container": "^3.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.5",

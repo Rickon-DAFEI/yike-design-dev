@@ -6,5 +6,5 @@
     "moduleResolution": "bundler", // 模块路径解析 支持ESM
     "allowSyntheticDefaultImports": true // 允许使用 import 导入使用 export = 导出的默认内容
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts","plugins/vite-plugin-markdownit.ts"]
 }

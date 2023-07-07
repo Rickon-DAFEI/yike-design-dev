@@ -257,6 +257,11 @@ const handleError = (err: any) => {
           @handleDelete="handleDelete"
           @handleError="handleError"
         ></upload>
+        <Snippet>
+          <template v-slot:desc>123124</template>
+          <template v-slot:source>124123123</template>
+          <template v-slot:code>awfabjkwe</template>
+        </Snippet>
       </CaseCard>
     </div>
     <div class="api">

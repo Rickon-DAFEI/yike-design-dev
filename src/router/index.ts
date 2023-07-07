@@ -95,8 +95,10 @@ const router = createRouter({
         },
         {
           path: 'upload',
-          component: () => import('../components/units/upload.vue'),
+          component: () => import('../yike-design/components/upload/index.md'),
+          // component: () => import('../components/units/upload.vue')
         },
+
       ],
     },
     {

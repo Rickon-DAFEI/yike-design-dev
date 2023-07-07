@@ -33,6 +33,7 @@ import Switch from './components/switch/ykSwitch.vue'
 import Stepper from './components/stepper/ykStepper.vue'
 import Rate from './components/rate/ykRate.vue'
 import Upload from './components/upload/YkUpload.vue'
+import Snippet from './components/snippet/YkSnippet.vue'
 
 import type { Component } from 'vue'
 
@@ -73,6 +74,7 @@ const components: {
   Stepper,
   Rate,
   Upload,
+  Snippet,
 }
 
 const install = (app: any) => {
@@ -125,4 +127,5 @@ export {
   Stepper, //步进器
   Rate, //评分
   Upload, //文件上传
+  Snippet,
 }
