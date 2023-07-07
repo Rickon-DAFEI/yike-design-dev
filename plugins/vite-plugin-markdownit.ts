@@ -1,3 +1,13 @@
+/*
+ * @Description: md文件转成html
+ * @Author: bruce
+ * @Date: 2022-01-18 10:35:24
+ * @LastEditTime: 2022-02-07 11:36:41
+ * @LastEditors: bruce
+ * @Reference:
+ */
+
+// const MarkdownIt = require('markdown-it');
 import MarkdownIt from 'markdown-it';
 import MarkdownItContainer from 'markdown-it-container';
 import hljs from 'highlight.js';
@@ -95,84 +105,49 @@ export default () => ({
         validate(params) {
           return params.trim().match(/^snippet\s*(.*)$/);
         },
-        // 代码块渲染
         render(tokens, index) {
-          const token = tokens[index];
+          const token = tokens[index]
           const tokenInfo = token.info.trim().match(/^snippet\s*(.*)$/);
           if (token.nesting === 1) {
-            // 获取snippet第一行的表述内容
             const desc = tokenInfo && tokenInfo.length > 1 ? tokenInfo[1] : '';
-            // 获取vue组件示例的代码
             const nextIndex = tokens[index + 1];
             const contentFence =
               nextIndex.type === 'fence' ? nextIndex?.content : '';
-            // 将content解析为vue组件基本属性对象;
-            const { descriptor } = parse(contentFence);
-            const { template, script, styles } = descriptor;
-            styleCodeList.push(styles);
-
-            // 将template的转为render函数
-            const templateCodeRender = genInlineComponentText(
-              template?.content,
-              script?.content,
-            );
-            if (script) {
-              const [global] = script.content.split(/export\s+default/);
-              globalScript.push(global.trim());
-            }
-
-            // 代码块解析将需要解析vue组件的存储，渲染html用组件名称替代
-            const name = `yk-snippent-${componentCodeList.length}`;
-            componentCodeList.push(`"${name}":${templateCodeRender}`);
-            // 代码块解析将需要解析vue组件的存储，渲染html用组件名称替代
-            return `<Snippet>
-                      <template v-slot:desc>${markdownIt.render(
+            return `<template>
+            <template>${markdownIt.render(
               desc,
             )}</template>
-                      <template v-slot:source>
-                        <${name} />
-                      </template>
-                      <template v-slot:code>`;
+            <template>
+              ${JSON.stringify(contentFence)}
+            </template>
+            </template>`
           }
-          return `    </template>
-                    </Snippet> `;
-        },
-      });
-      // 将所有转换好的代码字符串拼接成vue单组件template、script、style格式
-      const code = `
-      import {
-        createTextVNode as _createTextVNode,
-        resolveComponent as _resolveComponent,
-        withCtx as _withCtx,
-        createVNode as _createVNode,
-        openBlock as _openBlock,
-        createBlock as _createBlock,
-        toDisplayString as _toDisplayString ,
-        createElementBlock as  _createElementBlock,
-        createElementVNode as _createElementVNode,
-        normalizeStyle as _normalizeStyle 
-      } from "vue"
-      ${globalScript.join(' ')}
 
-      <template>
-        <div class="yk-snippet-doc">
-          ${markdownIt.render(src)}
-        </div>
-      </template>
-      <script>
-        export default {
-        name: 'yk-component-doc',
-        components: {
-          ${componentCodeList.join(',')}
         }
-      }
-     </script>
-      <style lang='less'>
-        ${Array.from(styleCodeList, m => m.content).join('\n')}
-      </style>`;
+      });
+      const descc = "`测试`文档"
+      const replacedMd = `
+      <script setup>
+      import UploadSingleFile from './upload-single-file.vue'
+      </script>
+      <template>
+        <Snippet>
+          <template v-slot:desc>${markdownIt.render(
+        descc,
+      )}</template>
+          <template v-slot:source>
+            <UploadSingleFile/>
+          </template>
+          <template v-slot:code>
+          <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+          </code></pre>
+          </template>
+        </Snippet>
+        </template>
+        `
 
       return {
-        code,
+        code: replacedMd,
         map: null,
       };
     }

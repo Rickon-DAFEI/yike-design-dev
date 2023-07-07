@@ -56,11 +56,13 @@ const codeIconSrc = computed(() =>
   font-size: 14px;
   transition: background-color 0.4s;
   line-height: 1.8;
-  code {
-    background: #e6effb;
-    border-radius: 3px;
-    color: #5e6d82;
-    padding: 2px 8px;
+  :deep {
+    code {
+      background: #e6effb;
+      border-radius: 3px;
+      color: #5e6d82;
+      padding: 2px 8px;
+    }
   }
 }
 .yk-snippet--icon-code {
