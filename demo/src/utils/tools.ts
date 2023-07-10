@@ -28,7 +28,7 @@ export const getRandomString = (len: number) => {
 }
 
 //拷贝内容
-export const tryCopy = (copyWrapper: any): void => {
+export const tryCopyContent = (copyWrapper: any): void => {
   // 创建select对象与range对象
   const selection: any = window.getSelection()
   const range = document.createRange()
