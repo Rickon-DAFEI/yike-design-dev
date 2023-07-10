@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { ref, getCurrentInstance } from 'vue'
 
-import { tryCopy } from '@/utils/yikeFunc'
+import { tryCopy } from '@/utils/tools'
 
 const props = defineProps({
   title: {

@@ -8,7 +8,7 @@ import { YkAvatar, YkAvatarGroup } from './components/avatar'
 import YkSpace from './components/space/Space.vue'
 import YkContainer from './components/container/Container.vue'
 import YkTable from './components/table/Table.vue'
-
+import YkMessage from './components/message'
 const components: {
   [propName: string]: Component
 } = {
@@ -20,7 +20,7 @@ const components: {
   YkAvatarGroup,
   YkSpace,
   YkContainer,
-  YkTable
+  YkTable,
 }
 
 export {
@@ -32,7 +32,7 @@ export {
   YkAvatarGroup,
   YkSpace,
   YkContainer,
-  YkTable
+  YkTable,
 }
 
 // 全局注册
@@ -41,6 +41,7 @@ export default {
     for (const c in components) {
       app.component(c, components[c])
     }
+    app.use(YkMessage)
   }
 }
 

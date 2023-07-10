@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { ref, getCurrentInstance } from 'vue'
 
-import { tryCopy } from '@/utils/yikeFunc'
+import { tryCopy } from '@/utils/tools'
 
 const props = defineProps({
   title: {
@@ -34,9 +34,10 @@ const props = defineProps({
 //复制模块
 const codes = ref(null)
 //信息模块
-const { proxy }: any = getCurrentInstance()
+
 //拷贝内容
 const tryCopys = (): void => {
+  const { proxy }: any = getCurrentInstance()
   tryCopy(codes.value)
   proxy.$message({ type: 'success', message: '拷贝成功' })
 }

@@ -71,6 +71,9 @@ const btStatus = (status: string): string => {
 }
 
 ykShape.value = btShape(props.shape)
+const handleClick = () => {
+  console.log('handleClick')
+}
 </script>
 
 <template>
@@ -80,6 +83,7 @@ ykShape.value = btShape(props.shape)
     class="yk-buttons"
   >
     <div
+      @click="handleClick"
       class="yk-button"
       :class="[type, size, btStatus(status)]"
       :style="{ width: long ? '100%' : 'auto' }"

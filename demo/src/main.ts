@@ -5,7 +5,6 @@ import { createPinia } from 'pinia'
 import Snippet from './components/Snippet.vue';
 import Title from './components/typography/Title.vue'
 import Text from './components/typography/Text.vue'
-
 // 加载yike-design-ui组件资源
 // import YikeDesignUI from '../../packages/yike-design-ui/src/index'
 // 加载yike-design-ui打包资源
