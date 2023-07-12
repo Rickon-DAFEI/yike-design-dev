@@ -13,10 +13,6 @@ const aliasDir = fileURLToPath(new URL('./src', import.meta.url));
 export default defineConfig({
   plugins: [vitePluginMarkdown(), vuePlugin, Components({
     resolvers: [
-      // (componentName) => {
-      //   if (componentName.startsWith('Yk'))
-      //     return { name: componentName, from: compDir }
-      // },
       (componentName) => {
         if (componentName.startsWith('Yk'))
           return { name: componentName, from: compDir }
