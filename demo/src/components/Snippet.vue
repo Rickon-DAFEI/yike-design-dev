@@ -51,7 +51,7 @@ const clickShow = (): void => {
   max-width: 800px;
 
   .container {
-    margin: 12px 0 8px;
+    margin: @space-m 0 @space-s;
     border-radius: @radius-m;
     border: 1px solid @line-color-s;
     padding: 20px;
@@ -106,7 +106,7 @@ const clickShow = (): void => {
   }
 
   .codes {
-    padding-top: @space-m;
+    padding-top: @space-l;
   }
 
   pre {

@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 <style scoped lang="less">
 .codes {
-  padding-bottom: @space-m;
+  padding-bottom: @space-l;
 }
 
 pre {

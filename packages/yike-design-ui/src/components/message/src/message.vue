@@ -40,13 +40,13 @@ const iconStatusMap = {
   success: 'yike-gou',
 }
 const isShow = ref(false)
-function startTimer() {
+const startTimer = () => {
   setTimeout(() => {
     close()
   }, props.duration)
 }
 
-function close() {
+const close = () => {
   isShow.value = false
 }
 onMounted(() => {

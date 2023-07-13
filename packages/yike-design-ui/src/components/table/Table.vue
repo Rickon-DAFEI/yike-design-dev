@@ -2,24 +2,30 @@
 defineProps({
   columns: {
     type: Array,
-    default: () => []
+    default: () => [],
   },
   data: {
     type: Array,
-    default: () => []
+    default: () => [],
   },
 })
-
-
 </script>
 <template>
   <div class="yk-table">
     <table cellspacing="0">
       <tr>
-        <th v-for="(e,index) in columns" :key="index">{{(e as any).title}}</th>
+        <th v-for="(e, index) in columns" :key="index">
+          {{ (e as any).title }}
+        </th>
       </tr>
-      <tr v-for="(n,i) in data" :key="i">
-        <td v-for="(e,j) in columns" :key="j" :class="{light:(e as any).light}">{{ (n as any)[(e as any).dataIndex] }}</td>
+      <tr v-for="(n, i) in data" :key="i">
+        <td
+          v-for="(e, j) in columns"
+          :key="j"
+          :class="{light:(e as any).light}"
+        >
+          {{ (n as any)[(e as any).dataIndex] }}
+        </td>
       </tr>
     </table>
   </div>
@@ -46,20 +52,21 @@ defineProps({
       background-color: @bg-color-m;
       font-size: @size-s;
       font-weight: 600;
-      padding-left: @space-m;
+      padding-left: @space-l;
       text-align: left;
       transition: background-color @animats;
     }
 
     td {
       border-top: 1px solid @line-color-s;
-      padding: 10px @space-m;
+      padding: 10px @space-l;
       text-align: left;
       max-width: 240px;
       transition: border @animats;
     }
-    .light{
-      color:@scolor;
+    .light {
+      color: @scolor;
     }
   }
-}</style>
+}
+</style>

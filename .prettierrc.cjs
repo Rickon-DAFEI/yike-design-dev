@@ -6,4 +6,4 @@ module.exports = {
   endOfLine: 'auto',
   trailingComma: 'all',
   tabWidth: 2,
-}
+};

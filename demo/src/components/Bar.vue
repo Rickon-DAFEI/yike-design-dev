@@ -42,12 +42,12 @@ defineProps({
   .container {
     // fix height error
     height: calc(100% - 60px);
-    padding: @space-s @space-m;
+    padding: @space-s @space-l;
     // overflow: auto;
   }
 
   .bar-title {
-    margin-top: @space-m;
+    margin-top: @space-l;
     height: 40px;
     line-height: 40px;
   }
@@ -56,7 +56,7 @@ defineProps({
     height: 40px;
     border-radius: @radius-m;
     line-height: 40px;
-    padding: 0 @space-m;
+    padding: 0 @space-l;
     display: block;
     color: @font-color-m;
     transition: color @animats;
