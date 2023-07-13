@@ -15,3 +15,4 @@ pnpm-debug.log*
 .idea/*
 package-lock.json
 pnpm-lock.yaml
+demo/components.d.ts
