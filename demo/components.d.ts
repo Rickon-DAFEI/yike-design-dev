@@ -22,6 +22,7 @@ declare module 'vue' {
     Yikedev: typeof import('./src/components/develops/yikedev.vue')['default']
     YkAlert: typeof import('./../packages/yike-design-ui/src/index.ts')['YkAlert']
     YkAvatar: typeof import('./../packages/yike-design-ui/src/index.ts')['YkAvatar']
+    YkAvatarGroup: typeof import('./../packages/yike-design-ui/src/index.ts')['YkAvatarGroup']
     YkBackTop: typeof import('./../packages/yike-design-ui/src/index.ts')['YkBackTop']
     YkButton: typeof import('./../packages/yike-design-ui/src/index.ts')['YkButton']
     YkContainer: typeof import('./../packages/yike-design-ui/src/index.ts')['YkContainer']
