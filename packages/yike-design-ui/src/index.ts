@@ -20,7 +20,7 @@ import YkSlider from './components/slider';
 import { YkCollapse, YkCollapseGroup } from './components/collapse';
 import YkPopconfirm from './components/popconfirm';
 import YkInputNumber from './components/input-number';
-import YkForm from './components/form';
+import { YkForm, YkFormItem } from './components/form';
 import YkAlert from './components/alert';
 import YkButton from './components/button';
 import YkTheme from './components/theme';
@@ -73,6 +73,7 @@ const components: {
   YkPopconfirm,
   YkInputNumber,
   YkForm,
+  YkFormItem,
   YkAlert,
   YkButton,
   YkTheme,
@@ -124,6 +125,7 @@ export {
   YkPopconfirm,
   YkInputNumber,
   YkForm,
+  YkFormItem,
   YkAlert,
   YkButton,
   YkTheme,
