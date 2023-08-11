@@ -94,7 +94,7 @@
 <script setup lang="ts">
 import { InputProps } from './input'
 import '../style'
-import { computed, ref, toRef, toRefs } from 'vue'
+import { computed, ref, toRef, toRefs, watch } from 'vue'
 import { createCssScope } from '../../utils/bem'
 import { useFormItem } from '../../utils'
 defineOptions({
@@ -119,12 +119,13 @@ const bem = createCssScope('input')
 
 const { disabled, status, message, size } = toRefs(props)
 
-const { mergedDisabled, isError, mergedStatus, mergedSize } = useFormItem({
-  disabled,
-  status,
-  message,
-  size,
-})
+const { mergedDisabled, isError, mergedStatus, mergedSize, validate } =
+  useFormItem({
+    disabled,
+    status,
+    message,
+    size,
+  })
 
 const isTyping = ref(false)
 const shouldLimitInput = props.limit > 0
@@ -175,6 +176,7 @@ const update = () => {
 
 const blur = () => {
   isFocus.value = false
+  validate('blur')
   emits('blur', lastValue)
 }
 
