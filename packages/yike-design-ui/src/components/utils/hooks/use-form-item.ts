@@ -26,10 +26,10 @@ export const useFormItem = ({
   const mergedSize = computed(() => () => size?.value || formItemCtx.size);
 
   const isError = computed(() => validateInstance.value.isError);
-  const mergedMessage = computed(
-    () => validateInstance.value?.message ?? message,
+
+  const mergedStatus = computed(
+    () => validateInstance.value?.status ?? status?.value,
   );
-  const mergedStatus = computed(() => validateInstance.value?.status ?? status);
 
   // ToDo
   // 添加radio、select、input等数据录入组件样式、尺寸的适配
@@ -40,6 +40,5 @@ export const useFormItem = ({
     mergedStatus,
     mergedSize,
     layout,
-    mergedMessage,
   };
 };
