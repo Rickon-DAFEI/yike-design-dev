@@ -93,7 +93,6 @@ const buildIconComponent = async (data: IconData[]) => {
           name: item.name,
           componentName: item.componentName,
         });
-
         fs.outputFile(
           path.resolve(iconComponents, `${item.name}/index.ts`),
           iconIndex,
@@ -155,7 +154,7 @@ function buildIconType(data: IconData[]) {
   for (const iconData of data) {
     for (const item of iconData.list) {
       exports.push(
-        `${item.componentName}: typeof import('yike-design-ui/es/svg-icon')['${item.componentName}'];`,
+        `${item.componentName}: typeof import('@yike-design/ui/es/components/svg-icon')['${item.componentName}'];`,
       );
     }
   }

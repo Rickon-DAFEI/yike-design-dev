@@ -3,11 +3,8 @@ import { defineConfig } from 'vite';
 import createVuePlugin from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vitePluginMarkdown from './plugins/vite-plugin-md';
-import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { YikeDevResolver } from './plugins/resolver';
-import { ArcoResolver } from 'unplugin-vue-components/resolvers';
-import path from 'path';
 const vuePlugin = createVuePlugin({
   include: [/\.vue$/, /\.md$/],
   script: {
@@ -15,31 +12,11 @@ const vuePlugin = createVuePlugin({
   },
 }); // 配置可编译 .vue 与 .md 文件
 
-const compDir = path
-  .resolve(__dirname, '..\\packages\\yike-design-ui\\src\\components')
-  .replace(/\\/g, '/');
-
-const indexDir = path
-  .resolve(__dirname, '..\\packages\\yike-design-ui\\src')
-  .replace(/\\/g, '/');
-
 const aliasDir = fileURLToPath(new URL('./src', import.meta.url));
 
 export default defineConfig({
   resolve: {
     alias: [
-      {
-        find: /^..\/packages\/yike-design-ui\/src\/components\/svg-icon\/index\.ts$/,
-        replacement: `${compDir}/svg-icon/index.ts`,
-      },
-      {
-        find: /^..\/packages\/yike-design-ui\/src\/components\/(.*)$/,
-        replacement: `${compDir}/$1.ts`,
-      },
-      {
-        find: /^..\/packages\/yike-design-ui\/src\/index\.ts$/,
-        replacement: `${indexDir}/index.ts`,
-      },
       {
         find: '@',
         replacement: aliasDir,
@@ -50,11 +27,8 @@ export default defineConfig({
     vitePluginMarkdown(),
     vuePlugin,
     vueJsx() as any,
-    AutoImport({
-      resolvers: [YikeDevResolver, ArcoResolver()],
-    }),
     Components({
-      resolvers: [YikeDevResolver, ArcoResolver()],
+      resolvers: [YikeDevResolver],
     }),
   ],
   css: {
@@ -63,7 +37,7 @@ export default defineConfig({
       less: {
         charset: false,
         additionalData:
-          '@import (reference) "@yike-design/ui/src/components/styles/index.less";',
+          '@import (reference) "@yike-design/ui/es/components/styles/index.less";',
       },
     },
   },

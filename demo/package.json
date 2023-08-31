@@ -24,7 +24,6 @@
     "@types/markdown-it": "^12.2.3",
     "@vitejs/plugin-vue": "^4.2.3",
     "highlight.js": "^11.7.0",
-    "unplugin-vue-components": "^0.25.1",
-    "unplugin-auto-import": "0.16.6"
+    "unplugin-vue-components": "^0.25.1"
   }
 }

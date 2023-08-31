@@ -1,10 +1,10 @@
 import { ComponentResolver } from 'unplugin-vue-components/types';
 import fs from 'fs';
 // 需要分析的文件路径
-const from = `../packages/yike-design-ui/src/index.ts`;
+const inputFile = `../packages/yike-design-ui/src/index.ts`;
 
 // 解析文件内容
-const fileContent = fs.readFileSync(from, 'utf-8');
+const fileContent = fs.readFileSync(inputFile, 'utf-8');
 
 // 存储导入路径和组件名称的映射关系
 const importPaths = {};
@@ -36,7 +36,7 @@ const extractImports = (content) => {
 };
 
 extractImports(fileContent);
-
+console.log('🚀 ~ file: resolver.ts:41 ~ importPaths:', importPaths);
 function sideEffects(from: string) {
   return `${from}/style/index`;
 }
@@ -45,10 +45,10 @@ export const YikeDevResolver: ComponentResolver = (componentName) => {
   if (componentName.startsWith('Yk')) {
     return {
       name: componentName,
-      from,
-      sideEffects: sideEffects(
-        `../packages/yike-design-ui/src/components/${importPaths[componentName]}`,
-      ),
+      from: '@yike-design/ui/es/components',
+      // sideEffects: sideEffects(
+      //   `@yike-design/ui/es/components/${importPaths[componentName]}`,
+      // ),
     };
   }
   if (componentName.startsWith('Icon')) {

@@ -44,8 +44,8 @@ program
   .command('buildComp')
   .description('build component module.')
   .action(() => {
-    // buildComponent();
-    buildComponent(true);
+    buildComponent({ umd: false });
+    buildComponent({ umd: true });
   });
 
 program.parse(process.argv);

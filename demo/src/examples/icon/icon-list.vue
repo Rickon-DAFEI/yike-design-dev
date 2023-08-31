@@ -2,6 +2,8 @@
 import { getCurrentInstance } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import iconData from '@yike-design/ui/src/components/svg-icon/icons.json'
+import * as Icons from '@yike-design/ui/es/components/svg-icon/index'
+
 const proxy: any = getCurrentInstance()?.proxy
 const { copy } = useClipboard({
   legacy: true,
@@ -39,10 +41,10 @@ const handleCopy = (item: any) => {
             <span>copied!</span>
           </div> -->
           <div v-if="list.title != '多彩图标'" class="icon">
-            <component :is="item.componentName" />
+            <component :is="Icons[item.componentName]" />
           </div>
           <div v-else class="icon">
-            <component :is="item.componentName" :size="42" />
+            <component :is="Icons[item.componentName]" :size="42" />
           </div>
           <span class="name">
             {{ getRealName(list, item.name) }}

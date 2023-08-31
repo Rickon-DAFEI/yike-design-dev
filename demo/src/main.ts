@@ -5,7 +5,7 @@ import Snippet from './components/Snippet.vue';
 import ColorCard from './components/ColorCard.vue';
 import componentPageVue from './components/component-page.vue';
 // 加载项目全局样式
-import '@yike-design/ui/src/components/styles/index.less';
+import '@yike-design/ui/es/components/styles/index.less';
 import '@/style/main.less';
 import '@/style/color-card.less';
 
@@ -15,7 +15,6 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import hljsVuePlugin from '@highlightjs/vue-plugin';
 
 // 全局注入 icon
-import Icon from '@yike-design/ui/src/components/svg-icon';
 import { YkTitle, YkMessage, YkNotification } from '@yike-design/ui/src';
 
 hljs.registerLanguage('javascript', javascript);
@@ -26,7 +25,6 @@ app
   .component('YkSnippet', Snippet)
   .component('ColorCard', ColorCard)
   .component(componentPageVue.name, componentPageVue)
-  .use(Icon)
   .use(hljsVuePlugin)
   .use(router)
   .mount('#app');
