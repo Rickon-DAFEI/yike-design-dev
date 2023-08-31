@@ -116,6 +116,7 @@ import cropPicture from './crop-picture.vue'
 import uploadDraggle from './upload-draggle.vue'
 import UploadPictureItem from './upload-picture-item.vue'
 import { YkImagePreviewGroup } from '../../../index'
+import { IconUpload2Outline, IconPlusOutline } from '../../svg-icon'
 defineOptions({
   name: 'YkUpload',
 })

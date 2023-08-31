@@ -46,7 +46,11 @@ import { getArcPath, getFileTypeIconName } from './utils'
 import { generateUid } from '../../utils/tools'
 import { FileItemProps } from './upload'
 import { createCssScope } from '../../utils/bem'
-
+import {
+  IconDeleteOutline,
+  IconTickOutline,
+  IconLoading1Outline,
+} from '../../svg-icon'
 const props = withDefaults(defineProps<FileItemProps>(), {
   progress: 0,
   fileContent: () => ({

@@ -41,7 +41,7 @@
 import { CollapseProps } from './collapse'
 import { createCssScope } from '../../utils/bem'
 import { onMounted, ref } from 'vue'
-
+import { IconRightOutline } from '../../svg-icon'
 const bem = createCssScope('collapse')
 
 defineOptions({

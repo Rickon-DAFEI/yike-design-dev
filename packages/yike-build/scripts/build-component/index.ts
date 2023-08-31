@@ -63,33 +63,31 @@ const buildComponent = async (umd = false) => {
       virtualPlugin(),
     ],
     build: {
-      minify: false,
-      sourcemap: true,
+      target: 'modules',
       outDir: 'es',
+      emptyOutDir: false,
+      minify: false,
       lib: {
         entry,
       },
       rollupOptions: {
         external: ['vue', '@vueuse/core'],
         treeshake: true,
+
         output: [
           {
-            format: 'esm',
+            format: 'es',
             dir: resolvePath('es'),
-            exports: undefined,
+            entryFileNames: '[name].js',
             preserveModules: true,
-            preserveModulesRoot: componentSrc,
-            sourcemap: true,
-            entryFileNames: `[name].mjs`,
+            preserveModulesRoot: 'components',
           },
           {
-            format: 'cjs',
+            format: 'commonjs',
             dir: resolvePath('lib'),
-            exports: 'named',
+            entryFileNames: '[name].js',
             preserveModules: true,
-            preserveModulesRoot: componentSrc,
-            sourcemap: true,
-            entryFileNames: `[name].js`,
+            preserveModulesRoot: 'components',
           },
         ],
       },

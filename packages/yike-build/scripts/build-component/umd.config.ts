@@ -46,6 +46,8 @@ export const genUmdConfig = (type: 'component' | 'icon'): InlineConfig => {
       // 开启lib模式
       lib: {
         entry,
+        formats: ['umd'],
+        name,
       },
     },
     plugins: [vue(), vueJsx()],

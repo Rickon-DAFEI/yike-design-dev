@@ -69,8 +69,7 @@ export default {
 import { watch, onUnmounted, ref, onMounted } from 'vue'
 import { createCssScope } from '../../utils/bem'
 import { modalBaseProps } from './modal'
-import '../style'
-
+import { IconCloseOutline } from '../../svg-icon'
 const props = withDefaults(defineProps<modalBaseProps>(), {
   modelValue: false,
   title: '',

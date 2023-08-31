@@ -45,6 +45,7 @@ import { YkInput, YkButton } from '../../../index'
 import { InputNumberProps } from './input-number'
 import { toRefs, ref, onMounted, reactive, computed } from 'vue'
 import { calculate, numberMatchReg } from './utils'
+import { IconUpOutline, IconDownOutline } from '../../svg-icon'
 
 defineOptions({
   name: 'YkInputNumber',

@@ -14,6 +14,7 @@
 import { ref } from 'vue'
 import { DraggleProps } from './upload'
 import { createCssScope } from '../../utils/bem'
+import { IconUpload1Outline } from '../../svg-icon'
 const props = withDefaults(defineProps<DraggleProps>(), {
   desc: '',
   disabled: false,

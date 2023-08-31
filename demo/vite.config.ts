@@ -3,8 +3,10 @@ import { defineConfig } from 'vite';
 import createVuePlugin from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vitePluginMarkdown from './plugins/vite-plugin-md';
+import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { YikeDevResolver } from './plugins/resolver';
+import { ArcoResolver } from 'unplugin-vue-components/resolvers';
 import path from 'path';
 const vuePlugin = createVuePlugin({
   include: [/\.vue$/, /\.md$/],
@@ -48,8 +50,11 @@ export default defineConfig({
     vitePluginMarkdown(),
     vuePlugin,
     vueJsx() as any,
+    AutoImport({
+      resolvers: [YikeDevResolver, ArcoResolver()],
+    }),
     Components({
-      resolvers: [YikeDevResolver],
+      resolvers: [YikeDevResolver, ArcoResolver()],
     }),
   ],
   css: {

@@ -51,6 +51,13 @@ import { createCssScope } from '../../utils/bem'
 import { FileItemProps } from './upload'
 import cropPicture from './crop-picture.vue'
 import { YkModal } from '../../../index'
+import {
+  IconImageBackupOutline,
+  IconUpload2Outline,
+  IconDeleteOutline,
+  IconModifyOutline,
+  IconEyeOutline,
+} from '../../svg-icon'
 
 const props = withDefaults(defineProps<FileItemProps>(), {
   progress: 0,

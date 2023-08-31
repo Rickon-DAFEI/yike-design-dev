@@ -32,7 +32,7 @@
 import { computed, ref } from 'vue'
 import { getIconName } from './util'
 import type { AlertEmits, AlertProps } from './alert'
-
+import { IconCrossOutline } from '../../svg-icon'
 defineOptions({
   name: 'YkAlert',
 })

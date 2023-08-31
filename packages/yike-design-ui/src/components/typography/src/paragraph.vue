@@ -13,7 +13,7 @@
 import { ref, onMounted } from 'vue'
 import { paragraphProps, ellipsisType } from './typography'
 import { tryCopy } from '../../utils/tools'
-
+import { IconCopyOutline } from '../../svg-icon'
 const props = withDefaults(defineProps<paragraphProps>(), {
   strong: false,
   type: 'default',

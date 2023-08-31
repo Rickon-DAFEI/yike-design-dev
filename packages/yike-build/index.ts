@@ -44,7 +44,7 @@ program
   .command('buildComp')
   .description('build component module.')
   .action(() => {
-    buildComponent();
+    // buildComponent();
     buildComponent(true);
   });
 
