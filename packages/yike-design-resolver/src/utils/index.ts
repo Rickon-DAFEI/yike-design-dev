@@ -95,7 +95,7 @@ export function getComponentsByName(componentName: string) {
 }
 
 export function sideEffects(name: string) {
-  return `@yike-design/ui/es/components/${name}/style/css.js`;
+  return `@yike-design/ui/es/components/${name}/style/index.less`;
 }
 
 export function sideEffectsDev(name: string) {
