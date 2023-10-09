@@ -41,3 +41,7 @@ export function YikeResolver(compName: string) {
     };
   }
 }
+
+// To Do
+// publish resolver package
+// add auto import method ducument
