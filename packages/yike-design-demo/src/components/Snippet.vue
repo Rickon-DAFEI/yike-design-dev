@@ -25,7 +25,7 @@ const showCode = ref(false)
 const html = ref('')
 
 const shiki = getHighlighter({
-  themes: ['light-plus', 'one-dark-pro'],
+  themes: ['vitesse-light', 'vitesse-dark'],
   langs: ['vue'],
 })
 
@@ -33,8 +33,8 @@ shiki.then((highlighter) => {
   html.value = highlighter.codeToHtml(originCode, {
     lang: 'vue',
     themes: {
-      dark: 'one-dark-pro',
-      light: 'light-plus',
+      dark: 'vitesse-dark',
+      light: 'vitesse-light',
     },
   })
 })
@@ -56,7 +56,7 @@ function onCopy() {
   <div class="demo-block">
     <slot name="demo"></slot>
   </div>
-  <yk-space justify="end" class="space-container" :size="8">
+  <yk-space class="flex-end" :size="8">
     <div class="icon" @click="onCopy"><icon-copy-outline /></div>
     <div
       class="icon"
@@ -94,9 +94,9 @@ function onCopy() {
   transition: all @animats;
 }
 
-.space-container {
+.flex-end {
   display: flex;
-  // justify-content: flex-end;
+  justify-content: flex-end;
 
   .icon {
     display: flex;

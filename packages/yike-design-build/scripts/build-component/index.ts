@@ -1,4 +1,3 @@
-import { glob } from 'fast-glob';
 import fs from 'fs-extra';
 import { Plugin, build } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -35,70 +34,74 @@ function virtualPlugin(): Plugin {
     },
   };
 }
+function externalPlugin(): Plugin {
+  return {
+    name: 'vite:external-node_modules',
+    enforce: 'pre',
+    async resolveId(source: string, importer) {
+      const result = await this.resolve(source, importer, {
+        skipSelf: true,
+        custom: { 'node-resolve': {} },
+      });
+
+      if (result && /node_modules/.test(result.id)) {
+        return false;
+      }
+
+      return null;
+    },
+  };
+}
 
 const buildComponent = async (umd = false) => {
   await fs.emptyDir(resolvePath('es'));
   await fs.emptyDir(resolvePath('lib'));
-  const entry = [
-    ...glob
-      .sync('**/*.{ts,vue}', {
-        absolute: true,
-        cwd: componentSrc,
-      })
-      .filter((file) => !file.includes('style')),
-  ];
+  // const entry = [
+  //   ...glob
+  //     .sync('**/*.{ts,vue}', {
+  //       absolute: true,
+  //       cwd: componentSrc,
+  //     })
+  //     .filter((file) => !file.includes('style')),
+  // ];
 
   await build({
-    plugins: [
-      vue({
-        script: {
-          defineModel: true,
-        },
-      }),
-      vueJsx() as any,
-      dts({
-        tsconfigPath: resolvePath('./tsconfig.json'),
-        outDir: [resolvePath('es'), resolvePath('lib')],
-      }),
-      virtualPlugin(),
-    ],
+    mode: 'production',
     build: {
-      minify: false,
-      sourcemap: true,
+      target: 'modules',
       outDir: 'es',
-      lib: {
-        entry,
-      },
+      emptyOutDir: false,
+      minify: false,
       rollupOptions: {
-        external: ['vue', '@vueuse/core'],
-        treeshake: true,
+        input: ['index.ts', 'components/svg-icon/index.ts'],
         output: [
           {
-            format: 'esm',
-            dir: resolvePath('es'),
-            exports: undefined,
+            format: 'es',
+            dir: 'es',
+            entryFileNames: '[name].js',
             preserveModules: true,
             preserveModulesRoot: componentSrc,
-            sourcemap: true,
-            entryFileNames: `[name].mjs`,
           },
           {
-            format: 'cjs',
-            dir: resolvePath('lib'),
-            exports: 'named',
+            format: 'commonjs',
+            dir: 'lib',
+            entryFileNames: '[name].js',
             preserveModules: true,
             preserveModulesRoot: componentSrc,
-            sourcemap: true,
-            entryFileNames: `[name].js`,
           },
         ],
       },
+      lib: {
+        entry: 'components/index.ts',
+        formats: ['es', 'cjs'],
+      },
     },
+    plugins: [externalPlugin(), vue(), vueJsx(), virtualPlugin(), dts()],
   });
 
-  const s = resolvePath('src/components/svg-icon/icons.json');
-  const t = resolvePath('es/components/svg-icon/icons.json');
-  await fs.copy(s, t);
+  const s = resolvePath('components/svg-icon/icons.json');
+  const t = resolvePath('es/svg-icon/icons.json');
+  // await fs.copy(s, t);
 
   if (umd) {
     await fs.emptyDir(resolvePath('dist'));

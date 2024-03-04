@@ -11,10 +11,10 @@ const developRoutes: RouteRecordRaw = {
       path: 'yike-dev',
       component: () => import('@/views/develop/yike-dev.md'),
     },
-    // {
-    //   path: 'grasp',
-    //   component: () => import('@/../../CONTRIBUTING.md'),
-    // },
+    {
+      path: 'grasp',
+      component: () => import('@/../../CONTRIBUTING.md'),
+    },
     {
       path: 'dark',
       component: () => import('@/views/develop/dark-model.md'),

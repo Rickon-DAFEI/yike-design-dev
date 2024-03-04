@@ -18,7 +18,6 @@
     "jsx": "preserve",
     "paths": {
       "@/*": ["src/*"],
-      "@yike-design-ui":["../packages/yike-design-ui/*"]
     }
   },
   "exclude": ["dist/**", "node_modules/**"],

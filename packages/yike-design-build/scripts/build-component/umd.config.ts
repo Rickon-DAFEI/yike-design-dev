@@ -6,8 +6,8 @@ import { resolvePath } from '../../utils/paths';
 export const genUmdConfig = (type: 'component' | 'icon'): InlineConfig => {
   const entry =
     type === 'component'
-      ? resolvePath('src/index.ts')
-      : resolvePath('src/components/svg-icon/yike-icon.ts');
+      ? resolvePath('index.ts')
+      : resolvePath('components/svg-icon/yike-icon.ts');
   const entryFileName =
     type === 'component' ? 'yike-design-ui' : 'yike-design-icon';
   const name = type === 'component' ? 'YikeDesignUI' : 'YikeDesignIcon';

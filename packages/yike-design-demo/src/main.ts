@@ -4,19 +4,17 @@ import router from './router';
 import Snippet from './components/Snippet.vue';
 import ColorCard from './components/ColorCard.vue';
 import DocPage from './components/DocPage.vue';
-const isDev = process.env.NODE_ENV === 'development';
 
 // 加载项目全局样式
 import '@/style/main.less';
 
-// Yike Design UI
-import Icon from '@yike-design-ui/src/components/svg-icon';
-import { YkTitle, YkMessage, YkNotification } from '@yike-design-ui/src';
-import { vLoading } from '@yike-design-ui/src/components/spinner/src/directive';
-import '@yike-design-ui/src/components/styles/index.less';
-import '@yike-design-ui/src/components/notification/style';
-import '@yike-design-ui/src/components/message/style';
-// import '@yike-design-ui/es/index.less';
+import { YkTitle, YkMessage, YkNotification } from '@yike-design/ui/index';
+import { vLoading } from '@yike-design/ui/components/spinner/src/directive';
+import '@yike-design/ui/components/styles/index.less';
+import '@yike-design/ui/components/notification/style';
+import '@yike-design/ui/components/message/style';
+import '@yike-design/ui/components/space/style';
+
 const app = createApp(App);
 
 app
@@ -24,7 +22,6 @@ app
   .component(Snippet.name, Snippet)
   .component(DocPage.name, DocPage)
   .component(ColorCard.name, ColorCard)
-  .use(Icon)
   .use(router)
   .mount('#app');
 

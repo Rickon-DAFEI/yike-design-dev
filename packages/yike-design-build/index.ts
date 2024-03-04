@@ -43,9 +43,9 @@ program
 program
   .command('buildComp')
   .description('build component module.')
-  .action(() => {
-    buildComponent();
-    buildComponent(true);
+  .action(async () => {
+    await buildComponent();
+    await buildComponent(true);
   });
 
 program.parse(process.argv);

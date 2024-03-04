@@ -8,7 +8,7 @@ import { build } from 'vite';
 
 const buildComponentCssModule = () => {
   const files = glob.sync('**/*.{less,js}', {
-    cwd: resolvePath('src/components'),
+    cwd: resolvePath('components'),
   });
   for (const filename of files) {
     const absolute = resolvePath(componentSrc, 'components', filename);
@@ -19,7 +19,7 @@ const buildComponentCssModule = () => {
     less.render(
       lessContent,
       {
-        paths: [resolvePath(`src/components/${path.dirname(filename)}`)],
+        paths: [resolvePath(`components/${path.dirname(filename)}`)],
       },
       (err, output) => {
         if (err) {
@@ -41,7 +41,7 @@ const buildComponentCssModule = () => {
 };
 
 const buildCssIndex = async () => {
-  const indexLessPath = resolvePath('src/index.less');
+  const indexLessPath = resolvePath('index.less');
   fs.copyFileSync(indexLessPath, 'es/index.less');
   fs.copyFileSync(indexLessPath, 'lib/index.less');
 
@@ -90,7 +90,6 @@ const buildStyleModule = async () => {
     cwd: componentSrc,
     absolute: true,
   });
-  console.log('entries: ', entries);
   await build({
     build: {
       target: 'modules',
@@ -106,14 +105,14 @@ const buildStyleModule = async () => {
             dir: 'es',
             entryFileNames: '[name].js',
             preserveModules: true,
-            preserveModulesRoot: resolvePath('src'),
+            preserveModulesRoot: componentSrc,
           },
           {
             format: 'commonjs',
             dir: 'lib',
             entryFileNames: '[name].js',
             preserveModules: true,
-            preserveModulesRoot: resolvePath('src'),
+            preserveModulesRoot: componentSrc,
           },
         ],
       },
