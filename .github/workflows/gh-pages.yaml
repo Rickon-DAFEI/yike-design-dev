@@ -30,6 +30,7 @@ jobs:
         run: |
           pnpm run build:demo
           touch ./packages/yike-design-demo/dist/index.html
+          cp ./packages/yike-design-demo/dist/index.html ./demo/dist/404.html
 
       - name: Deploy site
         uses: JamesIves/github-pages-deploy-action@v4
