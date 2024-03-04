@@ -44,7 +44,7 @@ skin 有三种模式，分别为：auto、light、dark，默认为 auto；contro
 
 源码中可以看到针对各模式下设置一套颜色变量。在此您可以根据设计需求进行自己调整或增减颜色变量。
 
-代码在 `@yike-design/ui/src/styles/theme.less`。
+代码在 `@yike-design/ui/styles/theme.less`。
 
 ```less
 //默认

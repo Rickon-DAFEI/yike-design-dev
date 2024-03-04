@@ -1,7 +1,3 @@
-export function sideEffects(name: string) {
-  return `@yike-design/ui/components/${name}/style`;
-}
-const yikeSrcPath = '@yike-design/ui/components';
 const matchComponents = [
   { pattern: /^YkUpload$/, componentDir: 'upload' },
   { pattern: /^(YkRadio|YkRadioGroup)$/, componentDir: 'radio' },
@@ -63,10 +59,7 @@ export function kebabCase(key: string) {
   const result = key.replace(/([A-Z])/g, ' $1').trim();
   return result.split(' ').join('-').toLowerCase();
 }
-function getComponentStyleDir(
-  importName: string,
-  importStyle: boolean | 'css' | 'less',
-) {
+function getComponentStyleDir(importName: string) {
   if (['ConfigProvider', 'Icon'].includes(importName)) return undefined;
 
   let componentDir = kebabCase(importName);
@@ -76,18 +69,24 @@ function getComponentStyleDir(
       break;
     }
   }
-  if (importStyle === 'less')
-    return `@yike-design/ui/es/components/${componentDir}/style/css.js`;
-  if (importStyle === 'css' || importStyle)
-    return `@yike-design/ui/es/components/${componentDir}/style/css.js`;
+  return `@yike-design/ui/es/components/${componentDir}/style/css.js`;
 }
-
+export function sideEffects(importName: string) {
+  let componentDir = kebabCase(importName);
+  for (const item of matchComponents) {
+    if (item.pattern.test(importName)) {
+      componentDir = item.componentDir;
+      break;
+    }
+  }
+  return `@yike-design/ui/components/${componentDir}/style`;
+}
 export function YikeResolver(compName: string) {
   if (compName.startsWith('Yk')) {
     return {
       name: compName,
       from: '@yike-design/ui/es',
-      // sideEffects: getComponentStyleDir(compName, 'less'),
+      sideEffects: getComponentStyleDir(compName),
     };
   }
   if (compName.startsWith('Icon')) {
@@ -98,18 +97,20 @@ export function YikeResolver(compName: string) {
   }
 }
 
+const yikeSrcPath = '@yike-design/ui';
+
 export function YikeDevResolver(compName: string) {
   if (compName.startsWith('Yk')) {
     return {
       name: compName,
-      from: '@yike-design/ui/components',
-      // sideEffects: getComponentStyleDir(compName, 'less'),
+      from: `${yikeSrcPath}/index.ts`,
+      sideEffects: sideEffects(compName),
     };
   }
   if (compName.startsWith('Icon')) {
     return {
       name: compName,
-      from: '@yike-design/ui/components/svg-icon',
+      from: `${yikeSrcPath}/components/svg-icon`,
     };
   }
 }

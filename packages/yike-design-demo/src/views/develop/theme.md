@@ -8,7 +8,7 @@ Yike Design 使用 less 作为预编译语言。为寻求最合理最少的变�
 
 **全局引入**：
 
-文件在 `@yike-design/ui/src/components/styles/colors/color.less`
+文件在 `@yike-design/ui/components/styles/colors/color.less`
 
 **Vite 引入方法**：
 

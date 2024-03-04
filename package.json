@@ -16,9 +16,10 @@
     "postinstall": "npx husky install",
     "preinstall": "npx only-allow pnpm",
     "version:release": "pnpm --filter @yike-design/ui release",
-    "build:comp": "pnpm --filter @yike-design/ui build:comp",
-    "build:less": "pnpm --filter @yike-design/ui build:less",
+    "build:comp": "pnpm --filter @yike-design/build build && pnpm --filter @yike-design/ui build:comp && pnpm --filter @yike-design/ui build:less",
+    "build:less": "pnpm --filter @yike-design/build build && pnpm --filter @yike-design/ui build:less",
     "gen:icon": "pnpm --filter @yike-design/ui gen:icon",
+    "gen:less": "pnpm --filter @yike-design/ui gen:less",
     "test": "pnpm --filter @yike-design/test test",
     "test:coverage": "pnpm --filter @yike-design/test test:coverage",
     "build:resolver": "pnpm --filter @yike-design/resolver build"

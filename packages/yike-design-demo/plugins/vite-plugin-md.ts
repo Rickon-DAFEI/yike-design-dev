@@ -31,15 +31,6 @@ export default function (): Plugin {
     name: 'vitePluginMarkdown',
     transform(code: string, id: string) {
       if (!id.endsWith('.md')) return;
-      if (!id.includes('demo/src')) {
-        // /yike-design-dev/CONTRIBUTING.md
-        return {
-          code: getTemplate('CONTRIBUTING', {
-            content: md.render(code),
-          }),
-        };
-      }
-
       // demo/src/*
       const importBucket = new Set<string>();
       const result = transformSnippetOrPure(id, code, importBucket);
